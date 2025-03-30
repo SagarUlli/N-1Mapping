@@ -1,5 +1,6 @@
 package model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,4 +12,5 @@ public class ObjectB {
 	@Id
 	private String name;
 	private int age;
+
 }

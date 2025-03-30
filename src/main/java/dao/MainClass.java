@@ -33,11 +33,16 @@ public class MainClass {
 		a2.setFollowers(300);
 		a2.setB(b);
 
+		
 //		------------------ Persist ------------------
 
 		entityTransaction.begin();
 		entityManager.persist(b);
+		entityManager.persist(a1);
+		entityManager.persist(a2);
 		entityTransaction.commit();
+		
+		
 
 //		------------------ Fetch ------------------
 
@@ -49,14 +54,14 @@ public class MainClass {
 
 //		------------------ Update ------------------
 
-		ObjectA updateA = entityManager.find(ObjectA.class, "_sagar.ulli_");
+		ObjectA updateA = entityManager.find(ObjectA.class, "sagar_ulli");
 		updateA.setAcc_type("public");
 		entityTransaction.begin();
 		entityManager.merge(updateA);
 		entityTransaction.commit();
 
 		ObjectB updateB = entityManager.find(ObjectB.class, "ulli sagar");
-		updateB.setName("suprith");
+		updateB.setAge(22);
 		entityTransaction.begin();
 		entityManager.merge(updateB);
 		entityTransaction.commit();
@@ -71,7 +76,7 @@ public class MainClass {
 //		-------------- Remove Parent ------------------
 // 						Hibernate Query Language
 
-		List<?> list = entityManager.createQuery("select acc from ObjectA a").getResultList();
+		List<?> list = entityManager.createQuery("select acc from ObjectA acc").getResultList();
 		Iterator<?> itr = list.iterator();
 		while (itr.hasNext()) {
 //							Break Relationship
